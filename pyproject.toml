@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "toolbox"
+name = "toolboxjeremynac"
 version = "0.1.6"
 description = ""
 authors = ["Jeremy Naccache"]
@@ -15,4 +15,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-toolbox = 'toolbox.toolbox:main'
+tb = 'toolboxjeremynac.toolbox:main'
