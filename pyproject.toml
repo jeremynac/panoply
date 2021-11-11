@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "savecommand"
+name = "panoply"
 version = "0.1.6"
 description = ""
 authors = ["Jeremy Naccache"]
