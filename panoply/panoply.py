@@ -2,15 +2,22 @@
 import argparse
 from io import TextIOWrapper
 import os
-import sys
 from simple_term_menu import TerminalMenu
 from shutil import which
 
 FILENAME: str = os.path.dirname(os.path.abspath(__file__)) + "/commands.txt"
 
+def print_help():
+    print("""
+    Usage: panoply [OPTION]
+
+    Options:
+    -a, --add: add a command
+    -r, --remove: remove a command
+    """)
 
 def is_tool(name: str):
-    return which(name) is not None
+    return which(name.split(' ')[0]) is not None
 
 def get_commands_array(file: TextIOWrapper) -> list[str]:
     commands = file.read().splitlines()
@@ -24,7 +31,11 @@ def save_commands_to_file(commands: list[str], file: TextIOWrapper):
 def display_commands_choice():
     file = open(FILENAME, "r")
     commands = get_commands_array(file);
-    terminal_menu = TerminalMenu(commands)
+    if not commands:
+        print("There are no commands saved yet")
+        print_help()
+        return
+    terminal_menu = TerminalMenu(commands, search_key=None, show_search_hint=True, show_search_hint_text="Type any character rzawto search a command")
     menu_entry_index = terminal_menu.show()
     if menu_entry_index is None:
         return
@@ -85,3 +96,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
