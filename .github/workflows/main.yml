@@ -82,10 +82,10 @@ jobs:
         run: pip install panoply
 
       - name: Generate formula
-        run: mkdir brew && cd brew && poet -f panoply
+        run: mkdir brew && poet -f panoply > brew/panoply.rb
 
       - name: Update name
-        run: ls brew b&& sed -i 's/Shiny new formula/Save your commands and reuse them/' ./brew/panoply.rb
+        run: sed -i 's/Shiny new formula/Save your commands and reuse them/' brew/panoply.rb
 
       - name: Push directory to another repository
         uses: cpina/github-action-push-to-another-repository@v1.3
