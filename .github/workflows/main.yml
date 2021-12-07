@@ -82,7 +82,7 @@ jobs:
         run: pip install panoply
 
       - name: Generate formula
-        run: mkdir brew && poet -f panoply > brew/panoply.rb
+        run: mkdir brew && poet -f panoply > brew/panoply.rb && echo "\n" > brew/panoply.rb
 
       - name: Update name
         run: sed -i 's/Shiny new formula/Save your commands and reuse them/' brew/panoply.rb
