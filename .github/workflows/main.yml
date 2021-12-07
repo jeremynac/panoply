@@ -71,6 +71,9 @@ jobs:
         uses: actions/setup-python@v2.2.2
         with:
           python-version: 3.9
+      
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Install poet
         run: pip install homebrew-pypi-poet
@@ -79,14 +82,16 @@ jobs:
         run: pip install panoply
 
       - name: Generate formula
-        run: mkdir brew && poet -f panoply > brew/panoply.rb
+        run: ./homebrew/update_formula.sh ${{ env.RELEASE_VERSION }}
+      
+      - run: cat ./homebrew/formula/panoply.rb
 
       - name: Push directory to another repository
         uses: cpina/github-action-push-to-another-repository@v1.3
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: brew
+          source-directory: homebrew/formula
           destination-github-username: jeremynac
           destination-repository-name: homebrew-panoply
           user-email: ${{secrets.EMAIL_GITHUB}}
