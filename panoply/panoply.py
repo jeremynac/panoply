@@ -6,15 +6,10 @@ from simple_term_menu import TerminalMenu
 from shutil import which
 
 FILENAME: str = os.path.dirname(os.path.abspath(__file__)) + "/commands.txt"
+parser = argparse.ArgumentParser(description='Save your commands and reuse them')
 
 def print_help():
-    print("""
-    Usage: panoply [OPTION]
-
-    Options:
-    -a, --add: add a command
-    -r, --remove: remove a command
-    """)
+    parser.print_help()
 
 def is_tool(name: str):
     return which(name.split(' ')[0]) is not None
@@ -80,7 +75,6 @@ def remove_command():
     file.close()
 
 def main():
-    parser = argparse.ArgumentParser(description='List the content of a folder')
 
     parser.add_argument('-a', '--add', action="store_true", help='add a command')
     parser.add_argument('-r', '--remove', action="store_true", help='remove a command')
