@@ -85,7 +85,7 @@ jobs:
         run: mkdir brew && cd brew && poet -f panoply
 
       - name: Update name
-        run: ls && sed -i 's/Shiny new formula/Save your commands and reuse them/' ./brew/panoply.rb
+        run: ls brew b&& sed -i 's/Shiny new formula/Save your commands and reuse them/' ./brew/panoply.rb
 
       - name: Push directory to another repository
         uses: cpina/github-action-push-to-another-repository@v1.3
