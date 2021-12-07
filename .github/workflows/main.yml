@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Publish package to pypi
 
 # Controls when the workflow will run
 on:
@@ -66,3 +66,4 @@ jobs:
           release_name: Panoply ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
+      - uses: ./.github/workflows/update_brew_formula.sh

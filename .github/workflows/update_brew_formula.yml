@@ -1,21 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Publish package to brew
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-    tags:
-      - '*'
-  pull_request:
-    branches: [ master ]
-    tags:
-      - '*'
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  workflow_call:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,19 +18,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Init brew directory
-        run: |
-            mkdir brew
-            cd brew
-            touch test.txt
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.9
+
+      - name: Install poet
+        run: pip install homebrew-pypi-poet
+
+      - name: Generate formula
+        run: mkdir brew && poet -f panoply > brew/panoply.rb
+
       - name: Push directory to another repository
         uses: cpina/github-action-push-to-another-repository@v1.3
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'brew'
-          destination-github-username: 'jeremynac'
-          destination-repository-name: 'homebrew-panoply'
+          source-directory: brew
+          destination-github-username: jeremynac
+          destination-repository-name: homebrew-panoply
           user-email: jeremy.naccache@epitech.eu
           target-branch: main
