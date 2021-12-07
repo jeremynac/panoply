@@ -75,6 +75,9 @@ jobs:
       - name: Install poet
         run: pip install homebrew-pypi-poet
 
+      - name: Install panoply
+        run: pip install panoply
+
       - name: Generate formula
         run: mkdir brew && poet -f panoply > brew/panoply.rb
 
