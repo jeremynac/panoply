@@ -1,7 +1,9 @@
 [tool.poetry]
 name = "panoply"
 version = "0.1.6"
-description = ""
+description = "Panoply: save commands and reuse them"
+homepage = "https://github.com/jeremynac/panoply"
+repository = "https://github.com/jeremynac/panoply"
 authors = ["Jeremy Naccache"]
 license = "LICENCE"
 
