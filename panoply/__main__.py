@@ -1,3 +1,3 @@
-from toolbox import main
+from panoply import main
 
 main()
