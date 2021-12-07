@@ -89,5 +89,5 @@ jobs:
           source-directory: brew
           destination-github-username: jeremynac
           destination-repository-name: homebrew-panoply
-          user-email: ${{secrets.GITHUB_EMAIL}}
+          user-email: ${{secrets.EMAIL_GITHUB}}
           target-branch: main
