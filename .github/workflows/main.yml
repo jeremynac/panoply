@@ -61,4 +61,5 @@ jobs:
           release_name: Panoply ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
+      - run: ls
       - uses: ./.github/workflows/update_brew_formula.yml@master
