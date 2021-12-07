@@ -66,4 +66,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ls
       - uses: ./.github/workflows/update_brew_formula.yml@master
