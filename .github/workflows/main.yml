@@ -61,5 +61,8 @@ jobs:
           release_name: Panoply ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
+  update-brew:
+    runs-on: ubuntu-latest
+    steps:
       - run: ls
       - uses: ./.github/workflows/update_brew_formula.yml@master
