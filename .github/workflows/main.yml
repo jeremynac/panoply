@@ -62,6 +62,7 @@ jobs:
           draft: false
           prerelease: false
   update-brew:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - run: ls
