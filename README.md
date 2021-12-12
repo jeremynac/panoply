@@ -8,5 +8,5 @@ A simple CLI to save commands and reuse them later.
 
 or
 
-```brew tap jeremynac/homebrew-panoply/panoply```
-```brew install jeremynac/homebrew-panoply/panoply```
+- ```brew tap jeremynac/homebrew-panoply/panoply```
+- ```brew install jeremynac/homebrew-panoply/panoply```
