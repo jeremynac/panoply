@@ -20,7 +20,7 @@ def get_commands_array(file: TextIOWrapper) -> list[str]:
 
 def save_commands_to_file(commands: list[str], file: TextIOWrapper):
     file.seek(0)
-    for command in commands:
+    for command in set(commands):
         file.write(command + '\n')
 
 def display_commands_choice():
