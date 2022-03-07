@@ -22,6 +22,7 @@ def save_commands_to_file(commands: list[str], file: TextIOWrapper):
     file.seek(0)
     for command in set(commands):
         file.write(command + '\n')
+    file.truncate()
 
 def display_commands_choice():
     file = open(FILENAME, "r")
@@ -69,7 +70,7 @@ def remove_command():
     command_to_remove=commands[menu_entry_index]
     if command_to_remove not in commands:
         print("This command cannot be removed: it is not saved")
-    if command_to_remove:
+    elif command_to_remove:
         commands.remove(command_to_remove)
         save_commands_to_file(commands=commands, file=file)
         print("The command","\'" + command_to_remove + "\'", "was succesfully removed")
