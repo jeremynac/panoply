@@ -52,8 +52,7 @@ def add_command():
     #
     if command_to_add in commands:
         print(command_to_add, "is already saved")
-        return
-    if command_to_add:
+    elif command_to_add:
         commands.append(command_to_add)
         save_commands_to_file(commands=commands, file=file)
         print("The command", "\'" + command_to_add + "\'", "was succesfully saved")
