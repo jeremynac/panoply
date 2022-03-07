@@ -73,5 +73,5 @@ jobs:
                 owner: 'jeremynac',
                 repo: 'homebrew-panoply',
                 workflow_id: 'main.yml',
-                ref: 'main'
+                ref: 'master'
               })
