@@ -45,10 +45,12 @@ def add_command():
     file = open(FILENAME, "r+")
     commands = get_commands_array(file)
     command_to_add=input("Enter the new command:\n")
-    if not is_tool(command_to_add):
-        print(command_to_add, "is not a command")
-        return
-    elif command_to_add in commands:
+    # Needs to be improved
+    # if not is_tool(command_to_add):
+    #     print(command_to_add, "is not a command")
+    #     return
+    #
+    if command_to_add in commands:
         print(command_to_add, "is already saved")
         return
     if command_to_add:
