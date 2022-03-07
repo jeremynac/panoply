@@ -27,10 +27,10 @@ def display_commands_choice():
     file = open(FILENAME, "r")
     commands = get_commands_array(file);
     if not commands:
-        print("There are no commands saved yet")
+        print("\nThere are no commands saved yet\n")
         print_help()
         return
-    terminal_menu = TerminalMenu(commands, search_key=None, show_search_hint=True, show_search_hint_text="Type any character rzawto search a command")
+    terminal_menu = TerminalMenu(commands, search_key=None, show_search_hint=True, show_search_hint_text="Type any character to search a command\n")
     menu_entry_index = terminal_menu.show()
     if menu_entry_index is None:
         return
