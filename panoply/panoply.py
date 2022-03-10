@@ -2,6 +2,7 @@
 import argparse
 from io import TextIOWrapper
 import os
+import subprocess
 from simple_term_menu import TerminalMenu
 from shutil import which
 
@@ -12,7 +13,7 @@ def print_help():
     parser.print_help()
 
 def is_tool(name: str):
-    return which(name.split(' ')[0]) is not None
+    return subprocess.check_call(name) is not None
 
 def get_commands_array(file: TextIOWrapper) -> list[str]:
     commands = file.read().splitlines()
@@ -36,10 +37,10 @@ def display_commands_choice():
     if menu_entry_index is None:
         return
     selected_command=commands[menu_entry_index]
-    if is_tool(selected_command):
-        os.system(selected_command)
-    else:
-        print(selected_command, "is not a command")
+    # if is_tool(selected_command):
+    subprocess.run(selected_command, shell=True)
+    # else:
+    #     print(selected_command, "is not a command")
     file.close()
 
 def add_command():
